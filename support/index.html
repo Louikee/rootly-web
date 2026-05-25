@@ -43,68 +43,19 @@
     p { font-size: 15px; color: #6B5045; margin-bottom: 16px; line-height: 1.85; }
     a { color: #C9897A; text-decoration: none; }
     a:hover { text-decoration: underline; color: #A86A5A; }
-
-    /* Contact box */
-    .contact-box {
-      background: rgba(201,137,122,0.1);
-      border: 1px solid rgba(201,137,122,0.25);
-      border-radius: 16px;
-      padding: 32px 36px;
-      margin-bottom: 48px;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-    .contact-icon {
-      width: 52px; height: 52px;
-      background: rgba(201,137,122,0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      flex-shrink: 0;
-    }
+    .contact-box { background: rgba(201,137,122,0.1); border: 1px solid rgba(201,137,122,0.25); border-radius: 16px; padding: 32px 36px; margin-bottom: 48px; display: flex; align-items: center; gap: 24px; }
     .contact-box h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; color: #2C1F1A; margin-bottom: 4px; letter-spacing: 0; text-transform: none; }
     .contact-box p { margin: 0; font-size: 14px; color: #6B5045; }
     .contact-box a { font-size: 15px; font-weight: 500; }
     .response-note { font-size: 12px; color: #9B7E6A; margin-top: 6px; display: block; }
-
-    /* FAQ */
-    .faq-item {
-      border-bottom: 1px solid rgba(180,140,110,0.18);
-      padding: 20px 0;
-    }
+    .faq-item { border-bottom: 1px solid rgba(180,140,110,0.18); padding: 20px 0; }
     .faq-item:last-child { border-bottom: none; }
-    .faq-question {
-      font-size: 15px;
-      font-weight: 500;
-      color: #2C1F1A;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      user-select: none;
-    }
+    .faq-question { font-size: 15px; font-weight: 500; color: #2C1F1A; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; user-select: none; }
     .faq-question:hover { color: #C9897A; }
-    .faq-arrow {
-      font-size: 18px;
-      color: #C9897A;
-      transition: transform 0.25s ease;
-      flex-shrink: 0;
-    }
-    .faq-answer {
-      font-size: 14px;
-      color: #6B5045;
-      line-height: 1.8;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-    }
+    .faq-arrow { font-size: 18px; color: #C9897A; transition: transform 0.25s ease; flex-shrink: 0; }
+    .faq-answer { font-size: 14px; color: #6B5045; line-height: 1.8; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
     .faq-item.open .faq-answer { max-height: 300px; padding-top: 12px; }
     .faq-item.open .faq-arrow { transform: rotate(45deg); }
-
     footer { text-align: center; padding: 32px; font-size: 12px; color: #B0987A; border-top: 1px solid rgba(180,140,110,0.15); position: relative; z-index: 2; }
     @media (max-width: 600px) { .glass-card { padding: 32px 24px; } h1 { font-size: 32px; } header { padding: 18px 20px; } .contact-box { flex-direction: column; align-items: flex-start; } }
   </style>
@@ -127,6 +78,8 @@
       <a href="/">Rootly</a>
       <span>Hair Growth Tracker</span>
     </header>
+
+    <a href="/" style="display:inline-flex;align-items:center;gap:8px;margin:24px 0 0 32px;font-family:'Jost',sans-serif;font-size:13px;color:rgba(44,31,26,0.6);text-decoration:none;letter-spacing:0.04em;position:relative;z-index:3;" onmouseover="this.style.color='#C9897A'" onmouseout="this.style.color='rgba(44,31,26,0.6)'">&#8592; Back to Home</a>
 
     <div class="container">
       <div class="glass-card">
