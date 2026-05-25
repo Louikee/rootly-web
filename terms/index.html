@@ -16,13 +16,7 @@
       overflow-x: hidden;
       cursor: none;
     }
-    .bg-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background: #F5ECD9;
-      overflow: hidden;
-    }
+    .bg-canvas { position: fixed; inset: 0; z-index: 0; background: #F5ECD9; overflow: hidden; }
     .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.6; }
     .orb-1 { width: 650px; height: 650px; background: radial-gradient(circle, #E8B89A, #F5ECD900); top: -150px; left: -120px; animation: drift1 20s ease-in-out infinite; }
     .orb-2 { width: 550px; height: 550px; background: radial-gradient(circle, #C9897A, #F5ECD900); bottom: -100px; right: -100px; animation: drift2 24s ease-in-out infinite; }
@@ -85,6 +79,8 @@
       <a href="/">Rootly</a>
       <span>Hair Growth Tracker</span>
     </header>
+
+    <a href="/" style="display:inline-flex;align-items:center;gap:8px;margin:24px 0 0 32px;font-family:'Jost',sans-serif;font-size:13px;color:rgba(44,31,26,0.6);text-decoration:none;letter-spacing:0.04em;position:relative;z-index:3;" onmouseover="this.style.color='#C9897A'" onmouseout="this.style.color='rgba(44,31,26,0.6)'">&#8592; Back to Home</a>
 
     <div class="container">
       <div class="glass-card">
