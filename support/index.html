@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support - Rootly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { min-height: 100%; }
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      background: #F5ECD9;
+      overflow-x: hidden;
+      cursor: none;
+    }
+    .bg-canvas { position: fixed; inset: 0; z-index: 0; background: #F5ECD9; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.6; }
+    .orb-1 { width: 650px; height: 650px; background: radial-gradient(circle, #E8B89A, #F5ECD900); top: -150px; left: -120px; animation: drift1 20s ease-in-out infinite; }
+    .orb-2 { width: 550px; height: 550px; background: radial-gradient(circle, #C9897A, #F5ECD900); bottom: -100px; right: -100px; animation: drift2 24s ease-in-out infinite; }
+    .orb-3 { width: 450px; height: 450px; background: radial-gradient(circle, #D4A574, #F5ECD900); top: 35%; left: 45%; animation: drift3 17s ease-in-out infinite; }
+    .orb-4 { width: 350px; height: 350px; background: radial-gradient(circle, #B8C4A8, #F5ECD900); top: 15%; right: 10%; animation: drift4 28s ease-in-out infinite; }
+    .orb-5 { width: 300px; height: 300px; background: radial-gradient(circle, #D4B896, #F5ECD900); bottom: 20%; left: 10%; animation: drift5 22s ease-in-out infinite; }
+    @keyframes drift1 { 0% { transform: translate(0,0) scale(1); } 33% { transform: translate(100px,70px) scale(1.08); } 66% { transform: translate(50px,140px) scale(0.96); } 100% { transform: translate(0,0) scale(1); } }
+    @keyframes drift2 { 0% { transform: translate(0,0) scale(1); } 33% { transform: translate(-90px,-50px) scale(1.06); } 66% { transform: translate(-30px,-120px) scale(1.1); } 100% { transform: translate(0,0) scale(1); } }
+    @keyframes drift3 { 0% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-50%) scale(1.18) rotate(25deg); } 100% { transform: translate(-50%,-50%) scale(1); } }
+    @keyframes drift4 { 0% { transform: translate(0,0); } 25% { transform: translate(-50px,35px); } 75% { transform: translate(35px,-55px); } 100% { transform: translate(0,0); } }
+    @keyframes drift5 { 0% { transform: translate(0,0) scale(1); } 40% { transform: translate(60px,-40px) scale(1.05); } 80% { transform: translate(-30px,30px) scale(0.95); } 100% { transform: translate(0,0) scale(1); } }
+    .mouse-orb { position: fixed; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(201,137,122,0.35), rgba(212,165,116,0.18), transparent 70%); pointer-events: none; z-index: 1; transform: translate(-50%,-50%); filter: blur(40px); transition: left 0.1s ease-out, top 0.1s ease-out; }
+    .cursor { position: fixed; width: 9px; height: 9px; border-radius: 50%; background: #C9897A; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: left 0.03s, top 0.03s; box-shadow: 0 0 10px rgba(201,137,122,0.6); }
+    .page-wrap { position: relative; z-index: 2; min-height: 100vh; }
+    header { padding: 22px 40px; display: flex; align-items: center; border-bottom: 1px solid rgba(180,140,110,0.2); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); background: rgba(245,236,217,0.6); position: sticky; top: 0; z-index: 10; }
+    header a { font-family: 'Playfair Display', serif; font-size: 22px; color: #2C1F1A; text-decoration: none; letter-spacing: 0.02em; }
+    header span { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; color: #9B7E6A; letter-spacing: 0.16em; text-transform: uppercase; margin-left: auto; }
+    .container { max-width: 760px; margin: 48px auto; padding: 0 24px 80px; }
+    .glass-card { background: rgba(255,250,242,0.35); backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px); border: 1px solid rgba(212,180,148,0.35); border-radius: 24px; padding: 52px 56px; box-shadow: 0 8px 48px rgba(160,100,60,0.1), inset 0 1px 0 rgba(255,255,255,0.7); }
+    .page-label { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #C9897A; margin-bottom: 14px; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 600; color: #2C1F1A; line-height: 1.15; margin-bottom: 10px; }
+    .subtitle { font-size: 16px; color: #9B7E6A; margin-bottom: 44px; padding-bottom: 32px; border-bottom: 1px solid rgba(180,140,110,0.2); }
+    h2 { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 600; color: #2C1F1A; margin-top: 48px; margin-bottom: 20px; }
+    p { font-size: 15px; color: #6B5045; margin-bottom: 16px; line-height: 1.85; }
+    a { color: #C9897A; text-decoration: none; }
+    a:hover { text-decoration: underline; color: #A86A5A; }
+
+    /* Contact box */
+    .contact-box {
+      background: rgba(201,137,122,0.1);
+      border: 1px solid rgba(201,137,122,0.25);
+      border-radius: 16px;
+      padding: 32px 36px;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .contact-icon {
+      width: 52px; height: 52px;
+      background: rgba(201,137,122,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .contact-box h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; color: #2C1F1A; margin-bottom: 4px; letter-spacing: 0; text-transform: none; }
+    .contact-box p { margin: 0; font-size: 14px; color: #6B5045; }
+    .contact-box a { font-size: 15px; font-weight: 500; }
+    .response-note { font-size: 12px; color: #9B7E6A; margin-top: 6px; display: block; }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid rgba(180,140,110,0.18);
+      padding: 20px 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      font-size: 15px;
+      font-weight: 500;
+      color: #2C1F1A;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      user-select: none;
+    }
+    .faq-question:hover { color: #C9897A; }
+    .faq-arrow {
+      font-size: 18px;
+      color: #C9897A;
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
+    .faq-answer {
+      font-size: 14px;
+      color: #6B5045;
+      line-height: 1.8;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding-top: 12px; }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); }
+
+    footer { text-align: center; padding: 32px; font-size: 12px; color: #B0987A; border-top: 1px solid rgba(180,140,110,0.15); position: relative; z-index: 2; }
+    @media (max-width: 600px) { .glass-card { padding: 32px 24px; } h1 { font-size: 32px; } header { padding: 18px 20px; } .contact-box { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+
+  <div class="bg-canvas">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="orb orb-5"></div>
+  </div>
+
+  <div class="mouse-orb" id="mouseOrb"></div>
+  <div class="cursor" id="cursor"></div>
+
+  <div class="page-wrap">
+    <header>
+      <a href="/">Rootly</a>
+      <span>Hair Growth Tracker</span>
+    </header>
+
+    <div class="container">
+      <div class="glass-card">
+
+        <p class="page-label">Help Center</p>
+        <h1>Support</h1>
+        <p class="subtitle">We're here to help. Reach out anytime or browse our frequently asked questions below.</p>
+
+        <div class="contact-box">
+          <div>
+            <h3>Contact Support</h3>
+            <p><a href="mailto:customersupport.rootly@gmail.com">customersupport.rootly@gmail.com</a></p>
+            <span class="response-note">We typically respond within 24 to 48 hours.</span>
+          </div>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            How do I cancel my Rootly Pro subscription?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            You can cancel your subscription at any time through your iPhone's Settings. Go to Settings > your name > Subscriptions, find Rootly, and tap Cancel Subscription. You will retain access to Rootly Pro until the end of your current billing period.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            How do I request a refund?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            All purchases are processed through Apple. To request a refund, visit reportaproblem.apple.com, sign in with your Apple ID, find your Rootly purchase, and submit a refund request. Apple handles all refund decisions.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            How do I delete my account and data?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            To delete your account and all associated data, please email us at customersupport.rootly@gmail.com with the subject line "Account Deletion Request." We will process your request within 30 days.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            My progress photos are not uploading. What should I do?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Make sure Rootly has permission to access your photos. Go to Settings > Privacy & Security > Photos, find Rootly, and set it to "All Photos." Also check that you have a stable internet connection and enough storage space on your device.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            I signed in with Apple but can't access my account on a new device.
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Make sure you are signing in with the same Apple ID you used to create your Rootly account. If you are still having trouble, contact us at customersupport.rootly@gmail.com and we will help you recover your account.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            Why is Google Sign In not working?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Make sure you have a stable internet connection and that you are using a valid Google account. If you see an "Access Blocked" error, try again after a few minutes as this is sometimes a temporary issue. If the problem persists, contact us and we will help troubleshoot.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            Does Rootly offer a free trial?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Yes, Rootly Pro includes a free trial for new subscribers. After the trial period ends, your selected plan (monthly at $9.99 or annual at $39.99) will automatically begin. You can cancel before the trial ends to avoid being charged.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            Is my data and photos private?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Yes. Your progress photos and personal data are stored privately and are only accessible by you. We never share your information with third parties or use your photos for advertising. See our Privacy Policy for full details.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            The app is not working correctly. How do I report a bug?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Please email us at customersupport.rootly@gmail.com with a description of the issue, your iPhone model, and iOS version. Screenshots or screen recordings are also very helpful. We take all bug reports seriously and will follow up with you.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2026 Rootly. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    const mouseOrb = document.getElementById('mouseOrb');
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', (e) => {
+      mouseOrb.style.left = e.clientX + 'px';
+      mouseOrb.style.top = e.clientY + 'px';
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    function toggle(el) {
+      const item = el.parentElement;
+      item.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>
