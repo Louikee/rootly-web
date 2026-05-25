@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service - Rootly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { min-height: 100%; }
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      background: #F5ECD9;
+      overflow-x: hidden;
+      cursor: none;
+    }
+    .bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: #F5ECD9;
+      overflow: hidden;
+    }
+    .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.6; }
+    .orb-1 { width: 650px; height: 650px; background: radial-gradient(circle, #E8B89A, #F5ECD900); top: -150px; left: -120px; animation: drift1 20s ease-in-out infinite; }
+    .orb-2 { width: 550px; height: 550px; background: radial-gradient(circle, #C9897A, #F5ECD900); bottom: -100px; right: -100px; animation: drift2 24s ease-in-out infinite; }
+    .orb-3 { width: 450px; height: 450px; background: radial-gradient(circle, #D4A574, #F5ECD900); top: 35%; left: 45%; animation: drift3 17s ease-in-out infinite; }
+    .orb-4 { width: 350px; height: 350px; background: radial-gradient(circle, #B8C4A8, #F5ECD900); top: 15%; right: 10%; animation: drift4 28s ease-in-out infinite; }
+    .orb-5 { width: 300px; height: 300px; background: radial-gradient(circle, #D4B896, #F5ECD900); bottom: 20%; left: 10%; animation: drift5 22s ease-in-out infinite; }
+    @keyframes drift1 { 0% { transform: translate(0,0) scale(1); } 33% { transform: translate(100px,70px) scale(1.08); } 66% { transform: translate(50px,140px) scale(0.96); } 100% { transform: translate(0,0) scale(1); } }
+    @keyframes drift2 { 0% { transform: translate(0,0) scale(1); } 33% { transform: translate(-90px,-50px) scale(1.06); } 66% { transform: translate(-30px,-120px) scale(1.1); } 100% { transform: translate(0,0) scale(1); } }
+    @keyframes drift3 { 0% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-50%) scale(1.18) rotate(25deg); } 100% { transform: translate(-50%,-50%) scale(1); } }
+    @keyframes drift4 { 0% { transform: translate(0,0); } 25% { transform: translate(-50px,35px); } 75% { transform: translate(35px,-55px); } 100% { transform: translate(0,0); } }
+    @keyframes drift5 { 0% { transform: translate(0,0) scale(1); } 40% { transform: translate(60px,-40px) scale(1.05); } 80% { transform: translate(-30px,30px) scale(0.95); } 100% { transform: translate(0,0) scale(1); } }
+    .mouse-orb { position: fixed; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(201,137,122,0.35), rgba(212,165,116,0.18), transparent 70%); pointer-events: none; z-index: 1; transform: translate(-50%,-50%); filter: blur(40px); transition: left 0.1s ease-out, top 0.1s ease-out; }
+    .cursor { position: fixed; width: 9px; height: 9px; border-radius: 50%; background: #C9897A; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: left 0.03s, top 0.03s; box-shadow: 0 0 10px rgba(201,137,122,0.6); }
+    .page-wrap { position: relative; z-index: 2; min-height: 100vh; }
+    header { padding: 22px 40px; display: flex; align-items: center; border-bottom: 1px solid rgba(180,140,110,0.2); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); background: rgba(245,236,217,0.6); position: sticky; top: 0; z-index: 10; }
+    header a { font-family: 'Playfair Display', serif; font-size: 22px; color: #2C1F1A; text-decoration: none; letter-spacing: 0.02em; }
+    header span { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 400; color: #9B7E6A; letter-spacing: 0.16em; text-transform: uppercase; margin-left: auto; }
+    .container { max-width: 760px; margin: 48px auto; padding: 0 24px 80px; }
+    .glass-card { background: rgba(255,250,242,0.35); backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px); border: 1px solid rgba(212,180,148,0.35); border-radius: 24px; padding: 52px 56px; box-shadow: 0 8px 48px rgba(160,100,60,0.1), inset 0 1px 0 rgba(255,255,255,0.7); }
+    .page-label { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #C9897A; margin-bottom: 14px; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 600; color: #2C1F1A; line-height: 1.15; margin-bottom: 10px; }
+    .effective-date { font-size: 13px; color: #9B7E6A; margin-bottom: 44px; padding-bottom: 32px; border-bottom: 1px solid rgba(180,140,110,0.2); }
+    .toc { background: rgba(201,137,122,0.07); border: 1px solid rgba(212,180,148,0.3); border-radius: 12px; padding: 24px 28px; margin-bottom: 40px; }
+    .toc p { font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #8A9E8C; margin-bottom: 12px; }
+    .toc ol { padding-left: 18px; }
+    .toc ol li { font-size: 14px; color: #6B5045; margin-bottom: 6px; }
+    .toc ol li a { color: #C9897A; text-decoration: none; }
+    .toc ol li a:hover { text-decoration: underline; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 600; color: #2C1F1A; margin-top: 48px; margin-bottom: 14px; scroll-margin-top: 80px; }
+    h3 { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #8A9E8C; margin-top: 26px; margin-bottom: 10px; }
+    p { font-size: 15px; color: #6B5045; margin-bottom: 16px; line-height: 1.85; }
+    ul, ol { margin: 10px 0 16px 0; padding-left: 20px; }
+    ul li, ol li { font-size: 15px; color: #6B5045; margin-bottom: 8px; line-height: 1.75; }
+    ul li strong, ol li strong { color: #2C1F1A; font-weight: 500; }
+    a { color: #C9897A; text-decoration: none; }
+    a:hover { text-decoration: underline; color: #A86A5A; }
+    .callout { background: rgba(201,137,122,0.1); border-left: 2px solid #C9897A; border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 24px 0; }
+    .callout p { margin: 0; font-size: 14px; color: #6B5045; }
+    .contact-box { background: rgba(255,248,238,0.8); border: 1px solid rgba(212,180,148,0.35); border-radius: 14px; padding: 30px 34px; margin-top: 48px; }
+    .contact-box h2 { margin-top: 0; }
+    footer { text-align: center; padding: 32px; font-size: 12px; color: #B0987A; border-top: 1px solid rgba(180,140,110,0.15); position: relative; z-index: 2; }
+    @media (max-width: 600px) { .glass-card { padding: 32px 24px; } h1 { font-size: 32px; } header { padding: 18px 20px; } }
+  </style>
+</head>
+<body>
+
+  <div class="bg-canvas">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="orb orb-5"></div>
+  </div>
+
+  <div class="mouse-orb" id="mouseOrb"></div>
+  <div class="cursor" id="cursor"></div>
+
+  <div class="page-wrap">
+    <header>
+      <a href="/">Rootly</a>
+      <span>Hair Growth Tracker</span>
+    </header>
+
+    <div class="container">
+      <div class="glass-card">
+
+        <p class="page-label">Legal</p>
+        <h1>Terms of Service</h1>
+        <p class="effective-date">Effective Date: January 1, 2025</p>
+
+        <p>Welcome to Rootly. By downloading, installing, or using the Rootly: Hair Growth Tracker application ("App"), you agree to be bound by these Terms of Service ("Terms"). Please read them carefully. If you do not agree, do not use the App.</p>
+
+        <div class="toc">
+          <p>Table of Contents</p>
+          <ol>
+            <li><a href="#acceptance">Acceptance of Terms</a></li>
+            <li><a href="#services">Description of Service</a></li>
+            <li><a href="#subscriptions">Subscriptions and Billing</a></li>
+            <li><a href="#accounts">User Accounts</a></li>
+            <li><a href="#content">User Content</a></li>
+            <li><a href="#prohibited">Prohibited Uses</a></li>
+            <li><a href="#medical">Medical Disclaimer</a></li>
+            <li><a href="#ip">Intellectual Property</a></li>
+            <li><a href="#thirdparty">Third-Party Services</a></li>
+            <li><a href="#electronic">Electronic Communications</a></li>
+            <li><a href="#corrections">Corrections</a></li>
+            <li><a href="#disclaimer">Disclaimer of Warranties</a></li>
+            <li><a href="#liability">Limitation of Liability</a></li>
+            <li><a href="#indemnification">Indemnification</a></li>
+            <li><a href="#disputes">Dispute Resolution</a></li>
+            <li><a href="#california">California Users</a></li>
+            <li><a href="#governing">Governing Law</a></li>
+            <li><a href="#termination">Termination</a></li>
+            <li><a href="#changes">Changes to These Terms</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ol>
+        </div>
+
+        <h2 id="acceptance">1. Acceptance of Terms</h2>
+        <p>These Terms constitute a legally binding agreement between you and Rootly ("we," "us," or "our"). By accessing or using the App, you confirm that you are at least 13 years old and have the legal capacity to enter into this agreement. If you do not agree with any part of these Terms, you must discontinue use immediately.</p>
+
+        <h2 id="services">2. Description of Service</h2>
+        <p>Rootly is a hair growth tracking application that allows users to:</p>
+        <ul>
+          <li>Log daily hair care routines and medications</li>
+          <li>Track hair growth progress over time</li>
+          <li>Upload and store progress photos</li>
+          <li>Monitor XP, levels, and habit streaks</li>
+          <li>Access personalized hair care plans</li>
+        </ul>
+        <p>Rootly is intended for personal, informational use only and does not constitute medical advice.</p>
+
+        <h2 id="subscriptions">3. Subscriptions and Billing</h2>
+
+        <h3>Rootly Pro</h3>
+        <p>Rootly offers a premium subscription ("Rootly Pro") with the following plans:</p>
+        <ul>
+          <li><strong>Monthly:</strong> $9.99 per month</li>
+          <li><strong>Annual:</strong> $39.99 per year</li>
+        </ul>
+
+        <h3>Free Trial</h3>
+        <p>We may offer a free trial period for new subscribers. At the end of the trial, your subscription will automatically begin and your payment method will be charged unless you cancel before the trial expires.</p>
+
+        <h3>Billing</h3>
+        <ul>
+          <li>Subscriptions are billed through your Apple App Store account</li>
+          <li>Payment is charged to your Apple ID at confirmation of purchase</li>
+          <li>Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current period</li>
+          <li>Your account will be charged for renewal within 24 hours prior to the end of the current period</li>
+          <li>You can manage and cancel subscriptions in your Apple ID account settings</li>
+        </ul>
+
+        <h3>Refunds</h3>
+        <p>All purchases are processed through Apple. Refund requests must be submitted directly to Apple in accordance with their refund policy.</p>
+
+        <h2 id="accounts">4. User Accounts</h2>
+        <ul>
+          <li>You must create an account to use Rootly, via Apple Sign In or Google Sign In</li>
+          <li>You are responsible for maintaining the confidentiality of your account</li>
+          <li>You agree to provide accurate and complete information during registration</li>
+          <li>You may not share your account with others or create multiple accounts</li>
+          <li>We reserve the right to suspend or terminate accounts that violate these Terms</li>
+        </ul>
+
+        <h2 id="content">5. User Content</h2>
+        <p>You retain ownership of any content you submit to Rootly, including progress photos and log entries ("User Content"). By submitting User Content, you grant us a limited license to store and display it solely for the purpose of providing the service to you.</p>
+        <div class="callout">
+          <p>Your progress photos are stored privately and are only visible to you. We will never use your photos for advertising, share them with third parties, or use them to train AI models.</p>
+        </div>
+        <p>You agree not to submit content that is unlawful, harmful, or violates the rights of others.</p>
+
+        <h2 id="prohibited">6. Prohibited Uses</h2>
+        <p>You agree not to:</p>
+        <ul>
+          <li>Use the App for any unlawful purpose</li>
+          <li>Attempt to reverse engineer, modify, or hack the App</li>
+          <li>Use automated tools to access or scrape the App</li>
+          <li>Impersonate any person or entity</li>
+          <li>Interfere with the security or integrity of the App</li>
+          <li>Resell or commercially exploit the App or its content</li>
+        </ul>
+
+        <h2 id="medical">7. Medical Disclaimer</h2>
+        <div class="callout">
+          <p>Rootly is not a medical application. The content, tracking tools, and information provided are for informational and personal use only. Nothing in the App constitutes medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider regarding any hair loss, scalp conditions, or medication use.</p>
+        </div>
+
+        <h2 id="ip">8. Intellectual Property</h2>
+        <p>All content, features, and functionality of the App, including but not limited to the design, graphics, text, and code, are owned by Rootly and are protected by applicable intellectual property laws. You may not copy, reproduce, distribute, or create derivative works without our express written permission. You are granted a limited, non-exclusive, non-transferable license to use the App for personal, non-commercial purposes only.</p>
+
+        <h2 id="thirdparty">9. Third-Party Services</h2>
+        <p>The App integrates with third-party services including Supabase, RevenueCat, Apple, and Google. Your use of these services is subject to their respective terms and privacy policies. We are not responsible for the practices of third-party services.</p>
+
+        <h2 id="electronic">10. Electronic Communications</h2>
+        <p>By using Rootly, you consent to receive electronic communications from us, including notifications, account updates, and service-related messages. These communications are part of the service and you agree that any agreements, notices, or disclosures provided electronically satisfy any legal requirement that such communications be in writing.</p>
+
+        <h2 id="corrections">11. Corrections</h2>
+        <p>There may be information in the App that contains typographical errors, inaccuracies, or omissions. We reserve the right to correct any errors, inaccuracies, or omissions and to change or update information at any time without prior notice.</p>
+
+        <h2 id="disclaimer">12. Disclaimer of Warranties</h2>
+        <p>The App is provided "as is" and "as available" without warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement. We do not warrant that the App will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
+
+        <h2 id="liability">13. Limitation of Liability</h2>
+        <p>To the fullest extent permitted by law, Rootly shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including lost profits, lost revenue, loss of data, or other damages arising out of or related to your use of the App, even if we have been advised of the possibility of such damages. Our total liability to you for any claim arising out of these Terms shall not exceed the amount you paid us in the twelve months prior to the claim.</p>
+
+        <h2 id="indemnification">14. Indemnification</h2>
+        <p>You agree to defend, indemnify, and hold harmless Rootly and its officers, employees, and agents from and against any claims, liabilities, damages, losses, and expenses, including reasonable legal fees, arising out of or related to your use of the App, your User Content, or your violation of these Terms.</p>
+
+        <h2 id="disputes">15. Dispute Resolution</h2>
+        <p>Any dispute arising out of or relating to these Terms or the App shall first be attempted to be resolved through good-faith negotiation. If the dispute cannot be resolved informally, it shall be submitted to binding arbitration in the State of New York under the rules of the American Arbitration Association. You waive any right to participate in a class action lawsuit or class-wide arbitration.</p>
+
+        <h2 id="california">16. California Users</h2>
+        <p>If you are a California resident, you may report complaints to the Complaint Assistance Unit of the Division of Consumer Services of the California Department of Consumer Affairs by contacting them in writing at 1625 North Market Blvd., Sacramento, CA 95834, or by telephone at (800) 952-5210.</p>
+
+        <h2 id="governing">17. Governing Law</h2>
+        <p>These Terms shall be governed by and construed in accordance with the laws of the State of New York, without regard to its conflict of law provisions.</p>
+
+        <h2 id="termination">18. Termination</h2>
+        <p>We may suspend or terminate your access to the App at any time, with or without cause, and with or without notice. Upon termination, your right to use the App will immediately cease. You may delete your account at any time by contacting us at the email below.</p>
+
+        <h2 id="changes">19. Changes to These Terms</h2>
+        <p>We may update these Terms from time to time. We will notify you of significant changes by updating the Effective Date at the top of this page. Continued use of the App after changes constitutes your acceptance of the updated Terms.</p>
+
+        <div class="contact-box" id="contact">
+          <h2>20. Contact Us</h2>
+          <p>If you have any questions about these Terms, please reach out:</p>
+          <p>Email: <a href="mailto:customersupport.rootly@gmail.com">customersupport.rootly@gmail.com</a></p>
+        </div>
+
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2026 Rootly. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    const mouseOrb = document.getElementById('mouseOrb');
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', (e) => {
+      mouseOrb.style.left = e.clientX + 'px';
+      mouseOrb.style.top = e.clientY + 'px';
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+  </script>
+
+</body>
+</html>
