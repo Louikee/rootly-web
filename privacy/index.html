@@ -8,109 +8,229 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --cream: #FDFAF5;
-      --blush: #F5E6D8;
-      --rose: #C9897A;
-      --sage: #8A9E8C;
-      --mauve: #9B7E8A;
-      --dark: #2C1F1A;
-      --mid: #6B5045;
-      --border: #E8D5C4;
+    html, body {
+      min-height: 100%;
     }
 
     body {
       font-family: 'Jost', sans-serif;
-      background-color: var(--cream);
-      color: var(--dark);
       font-weight: 300;
       line-height: 1.8;
+      background: #F5ECD9;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* Animated gradient background */
+    .bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: #F5ECD9;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.6;
+    }
+
+    .orb-1 {
+      width: 650px; height: 650px;
+      background: radial-gradient(circle, #E8B89A, #F5ECD900);
+      top: -150px; left: -120px;
+      animation: drift1 20s ease-in-out infinite;
+    }
+    .orb-2 {
+      width: 550px; height: 550px;
+      background: radial-gradient(circle, #C9897A, #F5ECD900);
+      bottom: -100px; right: -100px;
+      animation: drift2 24s ease-in-out infinite;
+    }
+    .orb-3 {
+      width: 450px; height: 450px;
+      background: radial-gradient(circle, #D4A574, #F5ECD900);
+      top: 35%; left: 45%;
+      animation: drift3 17s ease-in-out infinite;
+    }
+    .orb-4 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, #B8C4A8, #F5ECD900);
+      top: 15%; right: 10%;
+      animation: drift4 28s ease-in-out infinite;
+    }
+    .orb-5 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, #D4B896, #F5ECD900);
+      bottom: 20%; left: 10%;
+      animation: drift5 22s ease-in-out infinite;
+    }
+
+    @keyframes drift1 {
+      0%   { transform: translate(0,0) scale(1); }
+      33%  { transform: translate(100px, 70px) scale(1.08); }
+      66%  { transform: translate(50px, 140px) scale(0.96); }
+      100% { transform: translate(0,0) scale(1); }
+    }
+    @keyframes drift2 {
+      0%   { transform: translate(0,0) scale(1); }
+      33%  { transform: translate(-90px, -50px) scale(1.06); }
+      66%  { transform: translate(-30px, -120px) scale(1.1); }
+      100% { transform: translate(0,0) scale(1); }
+    }
+    @keyframes drift3 {
+      0%   { transform: translate(-50%,-50%) scale(1); }
+      50%  { transform: translate(-50%,-50%) scale(1.18) rotate(25deg); }
+      100% { transform: translate(-50%,-50%) scale(1); }
+    }
+    @keyframes drift4 {
+      0%   { transform: translate(0,0); }
+      25%  { transform: translate(-50px, 35px); }
+      75%  { transform: translate(35px, -55px); }
+      100% { transform: translate(0,0); }
+    }
+    @keyframes drift5 {
+      0%   { transform: translate(0,0) scale(1); }
+      40%  { transform: translate(60px, -40px) scale(1.05); }
+      80%  { transform: translate(-30px, 30px) scale(0.95); }
+      100% { transform: translate(0,0) scale(1); }
+    }
+
+    /* Mouse follower orb */
+    .mouse-orb {
+      position: fixed;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,137,122,0.35), rgba(212,165,116,0.18), transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      filter: blur(40px);
+      transition: left 0.1s ease-out, top 0.1s ease-out;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      position: fixed;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #C9897A;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: left 0.03s, top 0.03s;
+      box-shadow: 0 0 10px rgba(201,137,122,0.6);
+    }
+
+    /* Page layout */
+    .page-wrap {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
     }
 
     header {
-      background-color: var(--cream);
-      border-bottom: 1px solid var(--border);
-      padding: 20px 40px;
+      padding: 22px 40px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      border-bottom: 1px solid rgba(180,140,110,0.2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(245,236,217,0.6);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     header a {
       font-family: 'Playfair Display', serif;
       font-size: 22px;
-      color: var(--dark);
+      color: #2C1F1A;
       text-decoration: none;
       letter-spacing: 0.02em;
     }
 
     header span {
       font-family: 'Jost', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 400;
-      color: var(--mid);
-      letter-spacing: 0.12em;
+      color: #9B7E6A;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       margin-left: auto;
     }
 
     .container {
-      max-width: 740px;
-      margin: 60px auto;
+      max-width: 760px;
+      margin: 48px auto;
       padding: 0 24px 80px;
     }
 
+    /* Glass card */
+    .glass-card {
+      background: rgba(255, 250, 242, 0.35);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(212, 180, 148, 0.35);
+      border-radius: 24px;
+      padding: 52px 56px;
+      box-shadow: 0 8px 48px rgba(160,100,60,0.1), inset 0 1px 0 rgba(255,255,255,0.7);
+    }
+
     .page-label {
-      font-family: 'Jost', sans-serif;
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--rose);
-      margin-bottom: 16px;
+      color: #C9897A;
+      margin-bottom: 14px;
     }
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 42px;
+      font-size: 44px;
       font-weight: 600;
-      color: var(--dark);
-      line-height: 1.2;
+      color: #2C1F1A;
+      line-height: 1.15;
       margin-bottom: 10px;
     }
 
     .effective-date {
       font-size: 13px;
-      color: var(--mid);
-      margin-bottom: 48px;
+      color: #9B7E6A;
+      margin-bottom: 44px;
       padding-bottom: 32px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(180,140,110,0.2);
     }
 
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 600;
-      color: var(--dark);
+      color: #2C1F1A;
       margin-top: 48px;
       margin-bottom: 14px;
     }
 
     h3 {
-      font-family: 'Jost', sans-serif;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--mauve);
-      margin-top: 28px;
+      color: #8A9E8C;
+      margin-top: 26px;
       margin-bottom: 10px;
     }
 
     p {
       font-size: 15px;
-      color: var(--mid);
+      color: #6B5045;
       margin-bottom: 16px;
+      line-height: 1.85;
     }
 
     ul {
@@ -120,42 +240,45 @@
 
     ul li {
       font-size: 15px;
-      color: var(--mid);
+      color: #6B5045;
       margin-bottom: 8px;
+      line-height: 1.75;
     }
 
     ul li strong {
-      color: var(--dark);
+      color: #2C1F1A;
       font-weight: 500;
     }
 
     a {
-      color: var(--rose);
+      color: #C9897A;
       text-decoration: none;
     }
 
     a:hover {
       text-decoration: underline;
+      color: #A86A5A;
     }
 
     .callout {
-      background-color: var(--blush);
-      border-left: 3px solid var(--rose);
-      border-radius: 0 8px 8px 0;
-      padding: 16px 20px;
+      background: rgba(201,137,122,0.1);
+      border-left: 2px solid #C9897A;
+      border-radius: 0 10px 10px 0;
+      padding: 18px 22px;
       margin: 24px 0;
     }
 
     .callout p {
       margin: 0;
       font-size: 14px;
+      color: #6B5045;
     }
 
     .contact-box {
-      background-color: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px 32px;
+      background: rgba(255,248,238,0.8);
+      border: 1px solid rgba(212,180,148,0.35);
+      border-radius: 14px;
+      padding: 30px 34px;
       margin-top: 48px;
     }
 
@@ -167,158 +290,190 @@
       text-align: center;
       padding: 32px;
       font-size: 12px;
-      color: #B0A098;
-      border-top: 1px solid var(--border);
+      color: #B0987A;
+      border-top: 1px solid rgba(180,140,110,0.15);
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 600px) {
+      .glass-card { padding: 32px 24px; }
+      h1 { font-size: 32px; }
+      header { padding: 18px 20px; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <a href="/">Rootly</a>
-    <span>Hair Growth Tracker</span>
-  </header>
-
-  <div class="container">
-
-    <p class="page-label">Legal</p>
-    <h1>Privacy Policy</h1>
-    <p class="effective-date">Effective Date: January 1, 2025</p>
-
-    <p>Rootly ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, disclose, and protect your information when you use the Rootly: Hair Growth Tracker mobile application and related services. By creating an account or using Rootly, you agree to the practices described here.</p>
-
-    <h2>1. Eligibility</h2>
-    <p>Rootly is intended for individuals 13 years of age or older. We do not knowingly collect personal information from anyone under 13. If we learn that a user under 13 has provided personal data, we will promptly delete it. Users between 13 and 18 should have parental consent before using the app.</p>
-
-    <h2>2. Information We Collect</h2>
-
-    <h3>A. Personal Information</h3>
-    <ul>
-      <li>Name and email address (via Apple or Google Sign In)</li>
-      <li>Gender and birth year</li>
-      <li>Profile details provided during onboarding</li>
-    </ul>
-
-    <h3>B. Hair & Health Data</h3>
-    <ul>
-      <li>Hair goals and hair situation</li>
-      <li>Medication and supplement usage</li>
-      <li>Daily hair care routine logs</li>
-      <li>Progress photos you choose to upload</li>
-      <li>Shed counts, scalp health notes, and other self-reported data</li>
-    </ul>
-
-    <h3>C. Device & Technical Data</h3>
-    <ul>
-      <li>IP address and approximate location</li>
-      <li>Device type and operating system</li>
-      <li>App usage patterns, screen views, and crash logs</li>
-      <li>Analytics data used to improve performance</li>
-    </ul>
-
-    <h3>D. Account & Authentication</h3>
-    <ul>
-      <li>Apple Sign In credentials</li>
-      <li>Google Sign In credentials</li>
-    </ul>
-
-    <h3>E. Purchase Information</h3>
-    <ul>
-      <li>Subscription status and transaction history processed through Apple and RevenueCat</li>
-    </ul>
-
-    <h2>3. How We Use Your Information</h2>
-    <ul>
-      <li>To provide and personalize the Rootly experience</li>
-      <li>To track your hair growth progress over time</li>
-      <li>To manage your subscription and provide access to Rootly Pro features</li>
-      <li>To send reminders and notifications you have opted into</li>
-      <li>To improve the app, fix bugs, and analyze usage patterns</li>
-      <li>To comply with legal obligations and prevent fraud</li>
-    </ul>
-
-    <h2>4. Progress Photos</h2>
-    <div class="callout">
-      <p>Photos you upload are stored privately in a secure, access-controlled storage bucket. They are only visible to you and are never used for advertising, shared with third parties, or used to train AI models.</p>
-    </div>
-
-    <h2>5. Data Storage & Security</h2>
-    <p>Your data is stored securely using Supabase, a trusted cloud database provider. We use the following security practices to protect your information:</p>
-    <ul>
-      <li>HTTPS encryption for all data in transit</li>
-      <li>Encryption at rest for stored data</li>
-      <li>Access controls and isolated databases</li>
-      <li>Private, access-controlled storage for progress photos</li>
-      <li>Periodic security reviews</li>
-    </ul>
-    <p>No system can guarantee perfect security, but we continually work to protect your information.</p>
-
-    <h2>6. Data Sharing</h2>
-    <p>We do not sell your personal data. We do not share your information with third parties except as necessary to operate the app or as required by law. We work with the following service providers:</p>
-
-    <h3>Infrastructure & Authentication</h3>
-    <ul>
-      <li><strong>Supabase</strong> — Database and file storage (<a href="https://supabase.com/privacy" target="_blank">Privacy Policy</a>)</li>
-      <li><strong>Apple Sign In</strong> — Authentication (<a href="https://www.apple.com/legal/privacy/" target="_blank">Privacy Policy</a>)</li>
-      <li><strong>Google Sign In</strong> — Authentication (<a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>)</li>
-    </ul>
-
-    <h3>Subscriptions</h3>
-    <ul>
-      <li><strong>RevenueCat</strong> — Subscription management (<a href="https://www.revenuecat.com/privacy" target="_blank">Privacy Policy</a>)</li>
-    </ul>
-
-    <h3>Legal</h3>
-    <p>We may disclose information if required to comply with applicable law, court orders, or to protect the safety of our users or others.</p>
-
-    <h2>7. Data Retention</h2>
-    <p>We retain your personal data only for as long as necessary to provide the Rootly service and fulfill the purposes outlined in this policy. When your account is deleted, your personal data is removed from our systems within 30 days, except where retention is legally required.</p>
-
-    <h2>8. International Data Transfers</h2>
-    <p>Your data may be processed and stored in the United States or other countries where our service providers operate. By using Rootly, you consent to the transfer of your information to these locations, which may have different data protection laws than your country of residence.</p>
-
-    <h2>9. Your Rights</h2>
-
-    <h3>General Rights</h3>
-    <ul>
-      <li><strong>Access:</strong> Request a copy of the personal data we hold about you</li>
-      <li><strong>Correction:</strong> Request that we correct inaccurate data</li>
-      <li><strong>Deletion:</strong> Request deletion of your account and associated data</li>
-      <li><strong>Opt-out:</strong> Opt out of push notifications at any time through your device settings</li>
-    </ul>
-
-    <h3>European Union Users (GDPR)</h3>
-    <p>If you access Rootly from the European Union, you have additional rights under GDPR:</p>
-    <ul>
-      <li>Data portability</li>
-      <li>Restriction of processing</li>
-      <li>Right to object to processing</li>
-      <li>Right to lodge a complaint with a supervisory authority</li>
-    </ul>
-
-    <p>To exercise any of these rights, contact us at <a href="mailto:customersupport.rootly@gmail.com">customersupport.rootly@gmail.com</a>.</p>
-
-    <h2>10. Cookies & Analytics</h2>
-    <p>Rootly may use analytics tools to understand how users interact with the app, improve performance, and fix issues. This data is aggregated and does not identify you personally. You may limit analytics collection through your device settings.</p>
-
-    <h2>11. Children's Privacy</h2>
-    <p>Rootly is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided us with personal data, please contact us immediately.</p>
-
-    <h2>12. Changes to This Policy</h2>
-    <p>We may update this Privacy Policy from time to time. The date at the top of this page reflects the most recent update. We will notify you of significant changes by updating the date and, where appropriate, through an in-app notification.</p>
-
-    <div class="contact-box">
-      <h2>Contact Us</h2>
-      <p>If you have any questions, data requests, or privacy concerns, please reach out:</p>
-      <p><strong>Rootly</strong><br />
-      Email: <a href="mailto:customersupport.rootly@gmail.com">customersupport.rootly@gmail.com</a></p>
-    </div>
-
+  <div class="bg-canvas">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="orb orb-5"></div>
   </div>
 
-  <footer>
-    &copy; 2026 Rootly. All rights reserved.
-  </footer>
+  <div class="mouse-orb" id="mouseOrb"></div>
+  <div class="cursor" id="cursor"></div>
+
+  <div class="page-wrap">
+    <header>
+      <a href="/">Rootly</a>
+      <span>Hair Growth Tracker</span>
+    </header>
+
+    <div class="container">
+      <div class="glass-card">
+
+        <p class="page-label">Legal</p>
+        <h1>Privacy Policy</h1>
+        <p class="effective-date">Effective Date: January 1, 2025</p>
+
+        <p>Rootly ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, disclose, and protect your information when you use the Rootly: Hair Growth Tracker mobile application and related services. By creating an account or using Rootly, you agree to the practices described here.</p>
+
+        <h2>1. Eligibility</h2>
+        <p>Rootly is intended for individuals 13 years of age or older. We do not knowingly collect personal information from anyone under 13. If we learn that a user under 13 has provided personal data, we will promptly delete it. Users between 13 and 18 should have parental consent before using the app.</p>
+
+        <h2>2. Information We Collect</h2>
+
+        <h3>A. Personal Information</h3>
+        <ul>
+          <li>Name and email address (via Apple or Google Sign In)</li>
+          <li>Gender and birth year</li>
+          <li>Profile details provided during onboarding</li>
+        </ul>
+
+        <h3>B. Hair &amp; Health Data</h3>
+        <ul>
+          <li>Hair goals and hair situation</li>
+          <li>Medication and supplement usage</li>
+          <li>Daily hair care routine logs</li>
+          <li>Progress photos you choose to upload</li>
+          <li>Shed counts, scalp health notes, and other self-reported data</li>
+        </ul>
+
+        <h3>C. Device &amp; Technical Data</h3>
+        <ul>
+          <li>IP address and approximate location</li>
+          <li>Device type and operating system</li>
+          <li>App usage patterns, screen views, and crash logs</li>
+          <li>Analytics data used to improve performance</li>
+        </ul>
+
+        <h3>D. Account &amp; Authentication</h3>
+        <ul>
+          <li>Apple Sign In credentials</li>
+          <li>Google Sign In credentials</li>
+        </ul>
+
+        <h3>E. Purchase Information</h3>
+        <ul>
+          <li>Subscription status and transaction history processed through Apple and RevenueCat</li>
+        </ul>
+
+        <h2>3. How We Use Your Information</h2>
+        <ul>
+          <li>To provide and personalize the Rootly experience</li>
+          <li>To track your hair growth progress over time</li>
+          <li>To manage your subscription and provide access to Rootly Pro features</li>
+          <li>To send reminders and notifications you have opted into</li>
+          <li>To improve the app, fix bugs, and analyze usage patterns</li>
+          <li>To comply with legal obligations and prevent fraud</li>
+        </ul>
+
+        <h2>4. Progress Photos</h2>
+        <div class="callout">
+          <p>Photos you upload are stored privately in a secure, access-controlled storage bucket. They are only visible to you and are never used for advertising, shared with third parties, or used to train AI models.</p>
+        </div>
+
+        <h2>5. Data Storage &amp; Security</h2>
+        <p>Your data is stored securely using Supabase, a trusted cloud database provider. We use the following security practices to protect your information:</p>
+        <ul>
+          <li>HTTPS encryption for all data in transit</li>
+          <li>Encryption at rest for stored data</li>
+          <li>Access controls and isolated databases</li>
+          <li>Private, access-controlled storage for progress photos</li>
+          <li>Periodic security reviews</li>
+        </ul>
+        <p>No system can guarantee perfect security, but we continually work to protect your information.</p>
+
+        <h2>6. Data Sharing</h2>
+        <p>We do not sell your personal data. We do not share your information with third parties except as necessary to operate the app or as required by law. We work with the following service providers:</p>
+
+        <h3>Infrastructure &amp; Authentication</h3>
+        <ul>
+          <li><strong>Supabase</strong> — Database and file storage (<a href="https://supabase.com/privacy" target="_blank">Privacy Policy</a>)</li>
+          <li><strong>Apple Sign In</strong> — Authentication (<a href="https://www.apple.com/legal/privacy/" target="_blank">Privacy Policy</a>)</li>
+          <li><strong>Google Sign In</strong> — Authentication (<a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>)</li>
+        </ul>
+
+        <h3>Subscriptions</h3>
+        <ul>
+          <li><strong>RevenueCat</strong> — Subscription management (<a href="https://www.revenuecat.com/privacy" target="_blank">Privacy Policy</a>)</li>
+        </ul>
+
+        <h3>Legal</h3>
+        <p>We may disclose information if required to comply with applicable law, court orders, or to protect the safety of our users or others.</p>
+
+        <h2>7. Data Retention</h2>
+        <p>We retain your personal data only for as long as necessary to provide the Rootly service and fulfill the purposes outlined in this policy. When your account is deleted, your personal data is removed from our systems within 30 days, except where retention is legally required.</p>
+
+        <h2>8. International Data Transfers</h2>
+        <p>Your data may be processed and stored in the United States or other countries where our service providers operate. By using Rootly, you consent to the transfer of your information to these locations, which may have different data protection laws than your country of residence.</p>
+
+        <h2>9. Your Rights</h2>
+
+        <h3>General Rights</h3>
+        <ul>
+          <li><strong>Access:</strong> Request a copy of the personal data we hold about you</li>
+          <li><strong>Correction:</strong> Request that we correct inaccurate data</li>
+          <li><strong>Deletion:</strong> Request deletion of your account and associated data</li>
+          <li><strong>Opt-out:</strong> Opt out of push notifications at any time through your device settings</li>
+        </ul>
+
+        <h3>European Union Users (GDPR)</h3>
+        <p>If you access Rootly from the European Union, you have additional rights under GDPR:</p>
+        <ul>
+          <li>Data portability</li>
+          <li>Restriction of processing</li>
+          <li>Right to object to processing</li>
+          <li>Right to lodge a complaint with a supervisory authority</li>
+        </ul>
+        <p>To exercise any of these rights, contact us at <a href="mailto:customersupport.rootly@gmail.com">customersupport.rootly@gmail.com</a>.</p>
+
+        <h2>10. Cookies &amp; Analytics</h2>
+        <p>Rootly may use analytics tools to understand how users interact with the app, improve performance, and fix issues. This data is aggregated and does not identify you personally. You may limit analytics collection through your device settings.</p>
+
+        <h2>11. Children's Privacy</h2>
+        <p>Rootly is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided us with personal data, please contact us immediately.</p>
+
+        <h2>12. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. The date at the top of this page reflects the most recent update. We will notify you of significant changes by updating the date and, where appropriate, through an in-app notification.</p>
+
+        <div class="contact-box">
+          <h2>Contact Us</h2>
+          <p>If you have any questions, data requests, or privacy concerns, please reach out:</p>
+          <p>Email: <a href="mailto:customersupport.rootly@gmail.com">customersupport.rootly@gmail.com</a></p>
+        </div>
+
+      </div>
+    </div>
+
+    <footer>
+      &copy; 2026 Rootly. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    const mouseOrb = document.getElementById('mouseOrb');
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', (e) => {
+      mouseOrb.style.left = e.clientX + 'px';
+      mouseOrb.style.top = e.clientY + 'px';
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+  </script>
 
 </body>
 </html>
