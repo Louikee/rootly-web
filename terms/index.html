@@ -8,14 +8,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { min-height: 100%; }
-    body {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      line-height: 1.8;
-      background: #F5ECD9;
-      overflow-x: hidden;
-      cursor: none;
-    }
+    body { font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.8; background: #F5ECD9; overflow-x: hidden; cursor: none; }
     .bg-canvas { position: fixed; inset: 0; z-index: 0; background: #F5ECD9; overflow: hidden; }
     .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.6; }
     .orb-1 { width: 650px; height: 650px; background: radial-gradient(circle, #E8B89A, #F5ECD900); top: -150px; left: -120px; animation: drift1 20s ease-in-out infinite; }
@@ -62,36 +55,23 @@
   </style>
 </head>
 <body>
-
   <div class="bg-canvas">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    <div class="orb orb-4"></div>
-    <div class="orb orb-5"></div>
+    <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div><div class="orb orb-4"></div><div class="orb orb-5"></div>
   </div>
-
   <div class="mouse-orb" id="mouseOrb"></div>
   <div class="cursor" id="cursor"></div>
-
   <div class="page-wrap">
     <header>
       <a href="/">Rootly</a>
       <span>Hair Growth Tracker</span>
     </header>
-
-
-
     <div class="container">
       <a href="/" style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;font-family:'Jost',sans-serif;font-size:13px;color:rgba(44,31,26,0.6);text-decoration:none;letter-spacing:0.04em;" onmouseover="this.style.color='#C9897A'" onmouseout="this.style.color='rgba(44,31,26,0.6)'">← Back to Home</a>
       <div class="glass-card">
-
         <p class="page-label">Legal</p>
         <h1>Terms of Service</h1>
-        <p class="effective-date">Effective Date: May 25, 2026</p>
-
+        <p class="effective-date">Effective Date: May 27, 2026</p>
         <p>Welcome to Rootly. By downloading, installing, or using the Rootly: Hair Growth Tracker application ("App"), you agree to be bound by these Terms of Service ("Terms"). Please read them carefully. If you do not agree, do not use the App.</p>
-
         <div class="toc">
           <p>Table of Contents</p>
           <ol>
@@ -129,23 +109,22 @@
           <li>Upload and store progress photos</li>
           <li>Monitor XP, levels, and habit streaks</li>
           <li>Access personalized hair care plans</li>
-          <li>Manage app preferences including sounds and notifications via the Settings screen</li>
+          <li>Log and track side effects from hair care products or medications</li>
+          <li>Export personal log history as a CSV file</li>
+          <li>Manage app preferences including sounds, notifications, and display settings via the Settings screen</li>
           <li>Submit feedback including bug reports and feature requests</li>
         </ul>
         <p>Rootly is intended for personal, informational use only and does not constitute medical advice.</p>
 
         <h2 id="subscriptions">3. Subscriptions and Billing</h2>
-
         <h3>Rootly Pro</h3>
         <p>Rootly offers a premium subscription ("Rootly Pro") with the following plans:</p>
         <ul>
           <li><strong>Monthly:</strong> $9.99 per month</li>
           <li><strong>Annual:</strong> $39.99 per year</li>
         </ul>
-
         <h3>Free Trial</h3>
         <p>We may offer a free trial period for new subscribers. At the end of the trial, your subscription will automatically begin and your payment method will be charged unless you cancel before the trial expires.</p>
-
         <h3>Billing</h3>
         <ul>
           <li>Subscriptions are billed through your Apple App Store account</li>
@@ -155,7 +134,6 @@
           <li>You can manage and cancel subscriptions in your Apple ID account settings</li>
           <li>You can also manage your subscription directly within the App via the Settings screen</li>
         </ul>
-
         <h3>Refunds</h3>
         <p>All purchases are processed through Apple. Refund requests must be submitted directly to Apple in accordance with their refund policy.</p>
 
@@ -222,7 +200,7 @@
         <p>These Terms shall be governed by and construed in accordance with the laws of the State of New York, without regard to its conflict of law provisions.</p>
 
         <h2 id="termination">18. Termination</h2>
-        <p>We may suspend or terminate your access to the App at any time, with or without cause, and with or without notice. Upon termination, your right to use the App will immediately cease. You may delete your account at any time by contacting us at the email below.</p>
+        <p>We may suspend or terminate your access to the App at any time, with or without cause, and with or without notice. Upon termination, your right to use the App will immediately cease. You may delete your account at any time through the Settings screen in the App or by contacting us at the email below.</p>
 
         <h2 id="changes">19. Changes to These Terms</h2>
         <p>We may update these Terms from time to time. We will notify you of significant changes by updating the Effective Date at the top of this page. Continued use of the App after changes constitutes your acceptance of the updated Terms.</p>
@@ -232,15 +210,10 @@
           <p>If you have any questions about these Terms, please reach out:</p>
           <p>Email: <a href="mailto:customersupport.rootly@gmail.com">customersupport.rootly@gmail.com</a></p>
         </div>
-
       </div>
     </div>
-
-    <footer>
-      &copy; 2026 Rootly. All rights reserved.
-    </footer>
+    <footer>&copy; 2026 Rootly. All rights reserved.</footer>
   </div>
-
   <script>
     const mouseOrb = document.getElementById('mouseOrb');
     const cursor = document.getElementById('cursor');
@@ -251,6 +224,5 @@
       cursor.style.top = e.clientY + 'px';
     });
   </script>
-
 </body>
 </html>
