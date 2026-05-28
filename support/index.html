@@ -48,13 +48,14 @@
     .contact-box p { margin: 0; font-size: 14px; color: #6B5045; }
     .contact-box a { font-size: 15px; font-weight: 500; }
     .response-note { font-size: 12px; color: #9B7E6A; margin-top: 6px; display: block; }
+    .faq-section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #C9897A; margin-top: 40px; margin-bottom: 4px; }
     .faq-item { border-bottom: 1px solid rgba(180,140,110,0.18); padding: 20px 0; }
     .faq-item:last-child { border-bottom: none; }
     .faq-question { font-size: 15px; font-weight: 500; color: #2C1F1A; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; user-select: none; }
     .faq-question:hover { color: #C9897A; }
     .faq-arrow { font-size: 18px; color: #C9897A; transition: transform 0.25s ease; flex-shrink: 0; }
     .faq-answer { font-size: 14px; color: #6B5045; line-height: 1.8; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
-    .faq-item.open .faq-answer { max-height: 300px; padding-top: 12px; }
+    .faq-item.open .faq-answer { max-height: 400px; padding-top: 12px; }
     .faq-item.open .faq-arrow { transform: rotate(45deg); }
     footer { text-align: center; padding: 32px; font-size: 12px; color: #B0987A; border-top: 1px solid rgba(180,140,110,0.15); position: relative; z-index: 2; }
     @media (max-width: 600px) { .glass-card { padding: 32px 24px; } h1 { font-size: 32px; } header { padding: 18px 20px; } .contact-box { flex-direction: column; align-items: flex-start; } }
@@ -79,8 +80,6 @@
       <span>Hair Growth Tracker</span>
     </header>
 
-
-
     <div class="container">
       <a href="/" style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;font-family:'Jost',sans-serif;font-size:13px;color:rgba(44,31,26,0.6);text-decoration:none;letter-spacing:0.04em;" onmouseover="this.style.color='#C9897A'" onmouseout="this.style.color='rgba(44,31,26,0.6)'">← Back to Home</a>
       <div class="glass-card">
@@ -99,6 +98,214 @@
 
         <h2>Frequently Asked Questions</h2>
 
+        <!-- GETTING STARTED -->
+        <p class="faq-section-label">Getting Started</p>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            How do I set up my daily checklist?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Go to the home screen and tap the edit icon in the top right corner of your checklist. You can add, remove, rename, and reorder items. Set each item's goal (how many times per day or days per week) and toggle items on or off.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            How do I log my progress?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Tap any checklist item on the home screen to mark it complete. For items with a goal greater than 1, tap multiple times to log each completion. You can also long press any item to access quick actions.
+          </div>
+        </div>
+
+        <!-- CHECKLIST & LOGGING -->
+        <p class="faq-section-label">Checklist &amp; Logging</p>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            What does Skip do?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Skipping an item marks it as intentionally skipped for the day. It will appear greyed out with a strikethrough and a "Skipped" badge. Skipped items do not count toward your daily completion percentage or analytics. The skip resets at midnight like normal items.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            How do I undo a log?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Long press any checklist item and tap "Undo Last Log." This removes the most recent completion for that item. If the item was skipped, it will be un-skipped.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            How do I reorder my checklist?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Long press any checklist item and tap "Reorder." This opens a dedicated reorder screen where you can drag items up and down within the daily and weekly sections. Tap Save when done.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            How do I view my history for a specific item?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Long press any checklist item and tap "View History." This takes you to the Calendar page filtered to show only that item's log history.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            What is the Perfect Day celebration?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            When you complete all of your daily checklist items (and any weekly items due that day), you'll see a confetti celebration and a "Perfect Day" popup. This only triggers once per day. You can disable it in Settings under Disable Popups.
+          </div>
+        </div>
+
+        <!-- REMINDERS -->
+        <p class="faq-section-label">Reminders</p>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            How do reminders work?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Open the Edit Checklist screen and expand any item. Tap "Set time" under the Reminder section to set a notification reminder. Daily items with a goal of 2 or more can have multiple reminders, one per goal count. Weekly items let you select specific days and set a time for each day.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            Why aren't my reminders showing up?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Make sure notifications are enabled for Rootly in your iPhone Settings. Go to Settings, scroll to Rootly, and confirm Allow Notifications is turned on. Also check that the Notifications toggle in the Rootly app Settings is enabled.
+          </div>
+        </div>
+
+        <!-- CALENDAR & ANALYTICS -->
+        <p class="faq-section-label">Calendar &amp; Analytics</p>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            How do I filter the calendar?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            On the Calendar page, tap the filter dropdown inside the calendar card. You can select one or more checklist items or side effects to filter both the calendar dots and the log history below. Select "All Items" to return to the default view.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            What do the calendar dots mean?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            A filled dot means you completed all logged items for that day. A lighter dot means you partially completed them. When filtering to a specific item, a filled dot means the item was fully completed and a lighter dot means it was partially done.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            What is the difference between Month, All Time, and Average in analytics?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Month shows your stats for the selected month with left and right arrows to navigate between months. All Time calculates your stats based only on the days you actively logged. Average calculates based on every day since you started using the app, including days you did not log, giving you a truer picture of your overall consistency.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            What is Completion Rate?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Completion Rate shows the average percentage of your daily checklist you completed across all your logged days. For example, if you have 8 items and typically complete 7, your completion rate would be around 88%.
+          </div>
+        </div>
+
+        <!-- SETTINGS -->
+        <p class="faq-section-label">Settings</p>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            What does Week Starts On do?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            This setting changes which day your week begins on. It affects the Calendar day headers, when weekly checklist items reset, and how weekly analytics are calculated. The default is Monday.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            What does Disable Popups do?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            When enabled, this hides the Perfect Day celebration modal and the level up notification modal. Your progress and XP still update normally, the popups just won't appear.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            What does Show Reminder Times do?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            When enabled, reminder times appear beneath each checklist item on the home screen. Toggle this off if you prefer a cleaner look without the times showing.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            How do I export my data?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Go to Settings and tap Export Data under the General section. This generates a CSV file of your full log history including checklist completions and side effects. You can save it to your Files app, email it, or share it to any app via the native share sheet.
+          </div>
+        </div>
+
+        <!-- SUBSCRIPTION -->
+        <p class="faq-section-label">Subscription</p>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            Does Rootly offer a free trial?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Yes, Rootly Pro includes a free trial for new subscribers. After the trial period ends, your selected plan (monthly at $9.99 or annual at $39.99) will automatically begin. You can cancel before the trial ends to avoid being charged.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            What is included in Rootly Pro?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Rootly Pro unlocks unlimited checklist items, advanced analytics, the Time Lapse feature, Before and After photo comparison, and priority support. Free users have access to core logging and calendar features.
+          </div>
+        </div>
+
         <div class="faq-item">
           <div class="faq-question" onclick="toggle(this)">
             How do I cancel my Rootly Pro subscription?
@@ -106,6 +313,26 @@
           </div>
           <div class="faq-answer">
             You can cancel your subscription at any time through your iPhone's Settings. Go to Settings > your name > Subscriptions, find Rootly, and tap Cancel Subscription. You will retain access to Rootly Pro until the end of your current billing period.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            How do I manage my subscription?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Go to Settings in the Rootly app and tap Manage Subscription. This opens your Apple subscription settings where you can upgrade, downgrade, or cancel.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            How do I restore my purchase on a new device?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Go to Settings in the Rootly app and tap Restore Purchases.
           </div>
         </div>
 
@@ -119,25 +346,8 @@
           </div>
         </div>
 
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggle(this)">
-            How do I delete my account and data?
-            <span class="faq-arrow">+</span>
-          </div>
-          <div class="faq-answer">
-            To delete your account and all associated data, please email us at customersupport.rootly@gmail.com with the subject line "Account Deletion Request." We will process your request within 30 days.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggle(this)">
-            My progress photos are not uploading. What should I do?
-            <span class="faq-arrow">+</span>
-          </div>
-          <div class="faq-answer">
-            Make sure Rootly has permission to access your photos. Go to Settings > Privacy & Security > Photos, find Rootly, and set it to "All Photos." Also check that you have a stable internet connection and enough storage space on your device.
-          </div>
-        </div>
+        <!-- ACCOUNT -->
+        <p class="faq-section-label">Account</p>
 
         <div class="faq-item">
           <div class="faq-question" onclick="toggle(this)">
@@ -161,21 +371,34 @@
 
         <div class="faq-item">
           <div class="faq-question" onclick="toggle(this)">
-            Does Rootly offer a free trial?
-            <span class="faq-arrow">+</span>
-          </div>
-          <div class="faq-answer">
-            Yes, Rootly Pro includes a free trial for new subscribers. After the trial period ends, your selected plan (monthly at $9.99 or annual at $39.99) will automatically begin. You can cancel before the trial ends to avoid being charged.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggle(this)">
             Is my data and photos private?
             <span class="faq-arrow">+</span>
           </div>
           <div class="faq-answer">
             Yes. Your progress photos and personal data are stored privately and are only accessible by you. We never share your information with third parties or use your photos for advertising. See our Privacy Policy for full details.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            How do I delete my account and data?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            To delete your account and all associated data, go to Settings in the Rootly app and tap Delete Account. This permanently deletes all your data and cannot be undone. You can also email us at customersupport.rootly@gmail.com with the subject line "Account Deletion Request."
+          </div>
+        </div>
+
+        <!-- TROUBLESHOOTING -->
+        <p class="faq-section-label">Troubleshooting</p>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggle(this)">
+            My progress photos are not uploading. What should I do?
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="faq-answer">
+            Make sure Rootly has permission to access your photos. Go to Settings > Privacy &amp; Security > Photos, find Rootly, and set it to "All Photos." Also check that you have a stable internet connection and enough storage space on your device.
           </div>
         </div>
 
